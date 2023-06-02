@@ -1,0 +1,15 @@
+class ExpensiveObject:
+    def process(self):
+        print("processing complete.")
+
+class ExpensiveObjectProxy:
+    def __init__(self):
+        self._object = None
+
+    def process(self):
+        if not self._object:
+            self._object = ExpensiveObject()
+        self._object.process()
+
+proxy = ExpensiveObjectProxy()
+proxy.process()  # 'processing complete.'
